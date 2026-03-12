@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>SEL 延伸閱讀與認證書單</title>
+   <style>
+       :root {
+           --ai-primary: #1f3b8a; /* 深藍色 */
+           --ai-secondary: #72d4ad; /* 粉綠色 */
+           --ai-gradient: linear-gradient(135deg, #549ee0 0%,#fe6ca1 25%,#febd01 75%, #27d28e 100%);
+           --bg-light: #f8f9fa;
+           --text-main: #333;
+           --text-sub: #666;
+       }
+
+
+       body {
+           font-family: "PingFang TC", "Heiti TC", "Microsoft JhengHei", sans-serif;
+           background-color: #ffffff;
+           margin: 0;
+           padding: 15px; /* 手機版邊距微調 */
+           display: flex;
+           flex-direction: column;
+           align-items: center;
+       }
+
+
+       .container {
+           max-width: 800px;
+           width: 100%;
+       }
+
+
+       /* 標題樣式 */
+       .section-header {
+           display: flex;
+           align-items: center;
+           margin-bottom: 20px;
+           padding-left: 10px;
+           border-left: 6px solid var(--ai-secondary);
+       }
+
+
+       .section-header h2 {
+           margin: 0;
+           font-size: 22px;
+           color: var(--text-main);
+           letter-spacing: 1px;
+       }
+
+
+       /* 延伸閱讀卡片容器 */
+       .article-grid {
+           display: grid;
+           grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+           gap: 12px;
+           margin-bottom: 30px;
+           min-height: 100px;
+       }
+
+
+       .article-card {
+           background: #fff;
+           border: 1px solid #eee;
+           border-radius: 12px;
+           padding: 16px;
+           text-decoration: none;
+           display: flex;
+           align-items: center;
+           justify-content: space-between;
+           transition: all 0.3s ease;
+           box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+       }
+
+
+       .article-card:hover {
+           transform: translateY(-2px);
+           box-shadow: 0 6px 15px rgba(83, 159, 223, 0.15);
+           border-color: var(--ai-primary);
+       }
+
+
+       .article-content {
+           display: flex;
+           align-items: center;
+           gap: 12px;
+           flex: 1;
+       }
+
+
+       .article-icon {
+           font-size: 20px;
+           flex-shrink: 0; /* 防止圖示被擠壓 */
+       }
+
+
+       .article-title {
+           color: var(--text-main);
+           font-size: 15px;
+           font-weight: 600;
+           line-height: 1.4;
+           margin: 0;
+           /* 避免長標題撐破 */
+           display: -webkit-box;
+           -webkit-line-clamp: 2;
+           -webkit-box-orient: vertical;
+           overflow: hidden;
+       }
+
+
+       .arrow-icon {
+           color: #ccc;
+           margin-left: 10px;
+           font-size: 14px;
+       }
+
+
+       /* 訂閱區塊 - 響應式核心修改 */
+       .subscribe-box {
+           background: #fff;
+           border-radius: 16px;
+           overflow: hidden;
+           display: flex;
+           flex-direction: row; /* 預設橫排 */
+           box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+           border: 1px solid #f0f0f0;
+           margin-top: 10px;
+       }
+
+
+       .subscribe-image {
+           width: 35%; /* 桌機版寬度 */
+           min-height: 250px;
+           background-color: var(--ai-primary);
+           background-image: url('https://premium-cdn.parenting.com.tw/files/upload/article-content-images/01KJCTQD6KPHNQXMCZP0V70RD1.jpg');
+           background-size: cover;
+           background-position: center;
+           position: relative;
+       }
+
+
+       .subscribe-info {
+           flex: 1;
+           padding: 24px;
+           display: flex;
+           flex-direction: column;
+           justify-content: center;
+       }
+
+
+       .subscribe-info h3 {
+           margin: 0 0 8px 0;
+           font-size: 19px;
+           color: var(--text-main);
+           line-height: 1.3;
+       }
+
+
+       .subscribe-info p {
+           margin: 0 0 16px 0;
+           color: var(--text-sub);
+           font-size: 14px;
+           line-height: 1.5;
+       }
+
+
+       .benefit-list {
+           margin: 0 0 20px 0;
+           padding: 0;
+           list-style: none;
+       }
+
+
+       .benefit-item {
+           display: flex;
+           align-items: center;
+           margin-bottom: 10px;
+           font-size: 13px;
+           color: var(--text-main);
+       }
+
+
+       .benefit-item::before {
+           content: "✓";
+           display: inline-block;
+           width: 16px;
+           height: 16px;
+           background: #e9f6ff;
+           color: var(--ai-secondary);
+           border-radius: 50%;
+           text-align: center;
+           line-height: 16px;
+           margin-right: 8px;
+           font-size: 10px;
+           font-weight: bold;
+           flex-shrink: 0;
+       }
+
+
+       .btn-primary {
+           display: block;
+           text-align: center;
+           padding: 14px 24px;
+           border-radius: 30px;
+           text-decoration: none;
+           font-weight: 600;
+           font-size: 16px;
+           background: var(--ai-gradient);
+           color: #fff;
+           box-shadow: 0 4px 15px rgba(255, 213, 96, 0.3);
+           transition: all 0.3s ease;
+       }
+
+
+       .btn-primary:hover {
+           opacity: 0.9;
+           transform: translateY(-2px);
+       }
+
+
+       .loading-text {
+           grid-column: 1 / -1;
+           text-align: center;
+           padding: 30px;
+           color: var(--text-sub);
+       }
+
+
+       /* 手機版適配區塊 */
+       @media (max-width: 640px) {
+           body { padding: 12px; }
+          
+           .section-header h2 { font-size: 20px; }
+
+
+           .subscribe-box {
+               flex-direction: column; /* 手機版改直排 */
+           }
+
+
+           .subscribe-image {
+               width: 100%;
+               height: 0;
+               padding-bottom: 52.5%; /* 關鍵：強制維持約 16:9 的比例，防止跑版 */
+               min-height: auto;
+           }
+
+
+           .subscribe-info { padding: 20px; }
+          
+           .subscribe-info h3 { font-size: 18px; }
+
+
+           .article-grid {
+               grid-template-columns: 1fr;
+               gap: 10px;
+           }
+       }
+   </style>
+</head>
+<body>
+
+
+<div class="container">
+   <div class="section-header">
+       <h2>SEL 文章、資源推薦</h2>
+   </div>
+
+
+   <div class="article-grid" id="article-container">
+       <div class="loading-text">內容載入中...</div>
+   </div>
+
+
+   
+
+<script>
+   const API_URL = "https://script.google.com/macros/s/AKfycbwEcIcAweJmvzf5eRF-ylheubdeIzgSNvdS7_hIKpLi6WdZFIfkTDBTB9K-e2wB5DjU/exec";
+
+
+   async function loadArticles() {
+       const container = document.getElementById('article-container');
+      
+       try {
+           const response = await fetch(API_URL);
+           if (!response.ok) throw new Error('網路回應不正常');
+          
+           const data = await response.json();
+           container.innerHTML = '';
+
+
+           // 限制載入數量並生成卡片
+           data.slice(0, 6).forEach(article => {
+               const card = document.createElement('a');
+               card.href = article.url;
+               card.target = "_blank";
+               card.className = "article-card";
+               card.innerHTML = `
+                   <div class="article-content">
+                       <div class="article-icon">${article.icon || '📄'}</div>
+                       <p class="article-title">${article.title}</p>
+                   </div>
+                   <span class="arrow-icon">❯</span>
+               `;
+               container.appendChild(card);
+           });
+
+
+       } catch (error) {
+           console.error('抓取失敗:', error);
+           container.innerHTML = '<div class="loading-text">暫時無法載入推薦內容，請稍後再試。</div>';
+       }
+   }
+
+
+   window.onload = loadArticles;
+</script>
+
+
+</body>
+</html>
